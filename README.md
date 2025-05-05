@@ -1,54 +1,52 @@
-# React + TypeScript + Vite
+# React 19 + TypeScript + Vite + ESLint 9.x + Standard rule
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 템플릿은 기본 Vite의 React + TypeScript 템플릿에 ESLint 9.x와 Standard 규칙이 추가된 버전입니다. HMR(Hot Module Replacement)과 기본적인 개발 환경 설정을 제공합니다.
 
-Currently, two official plugins are available:
+## 추가된 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **ESLint 9.x**: 최신 버전의 ESLint 통합
+- **Standard rule**: `@seungwoo321/eslint-plugin-standard-js`와 `@seungwoo321/eslint-plugin-standard-jsx` 플러그인을 통한 일관된 코드 스타일 적용
 
-## Expanding the ESLint configuration
+나머지 기능은 기본 Vite React + TypeScript 템플릿과 동일합니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Vite 플러그인
+
+현재 두 가지 공식 플러그인이 제공됩니다:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)는 Fast Refresh를 위해 [Babel](https://babeljs.io/)을 사용합니다.
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)는 Fast Refresh를 위해 [SWC](https://swc.rs/)를 사용합니다.
+
+## ESLint 구성 확장하기
+
+프로덕션 애플리케이션을 개발하는 경우, 타입 인식 린트 규칙을 활성화하기 위해 구성을 업데이트하는 것을 권장합니다:
 
 ```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
+import { defineConfig } from 'eslint/config'
+import standardJs from '@seungwoo321/eslint-plugin-standard-js'
+import standardJsx from '@seungwoo321/eslint-plugin-standard-jsx'
+import tseslint from 'typescript-eslint'
+
+export default defineConfig([
+  {
+    files: ['**/*.{js,mjs,cjs,ts,mts,jsx,tsx}'],
+    ignores: ['eslint.config.js'],
+    extends: [
+      // ...tseslint.configs.recommended 대신 아래 내용으로 교체하세요
+      ...tseslint.configs.recommendedTypeChecked,
+      // 또는 더 엄격한 규칙을 위해 다음을 사용하세요
+      ...tseslint.configs.strictTypeChecked,
+      // 스타일 관련 규칙을 추가하려면 다음을 사용하세요
+      ...tseslint.configs.stylisticTypeChecked,
+      // Standard 규칙은 유지합니다
+      ...standardJs.configs.recommended,
+      ...standardJsx.configs.recommended
+    ],
+    languageOptions: {
+      // 다른 옵션들...
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname
+      }
     }
   }
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules
-  }
-})
-```
+])
