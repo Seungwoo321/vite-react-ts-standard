@@ -6,11 +6,17 @@ import tseslint from 'typescript-eslint'
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,jsx,tsx}'],
+    ignores: ['eslint.config.js', "dist/**/*"],
     extends: [
-      ...tseslint.configs.strict,
-      ...tseslint.configs.stylistic,
+      ...tseslint.configs.recommendedTypeChecked,
       ...standardJs.configs.recommended,
       ...standardJsx.configs.recommended
-    ]
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname
+      }
+    }
   }
 ])

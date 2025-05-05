@@ -14,7 +14,7 @@ function App () {
         >
           {' '}
           <img
-            src='/vite.svg'
+            src='vite.svg'
             className='logo'
             alt='Vite logo'
           />
