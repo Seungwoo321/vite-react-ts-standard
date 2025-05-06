@@ -1,24 +1,26 @@
 # React 19 + TypeScript + Vite + ESLint 9.x + Standard rule
 
-이 템플릿은 기본 Vite의 React + TypeScript 템플릿에 ESLint 9.x와 Standard 규칙이 추가된 버전입니다. HMR(Hot Module Replacement)과 기본적인 개발 환경 설정을 제공합니다.
+> 📚 Available in: [English](./README.md) | [한국어](./README.ko.md)
 
-## 추가된 기능
+This template is a modified version of the default Vite React + TypeScript template, with ESLint 9.x and Standard rules added. It includes Hot Module Replacement (HMR) and basic development setup.
 
-- **ESLint 9.x**: 최신 버전의 ESLint 통합
-- **Standard rule**: `@seungwoo321/eslint-plugin-standard-js`와 `@seungwoo321/eslint-plugin-standard-jsx` 플러그인을 통한 일관된 코드 스타일 적용
+## Added Features
 
-나머지 기능은 기본 Vite React + TypeScript 템플릿과 동일합니다.
+- **ESLint 9.x**: Integrated with the latest version of ESLint
+- **Standard rule**: Consistent code style via `@seungwoo321/eslint-plugin-standard-js` and `@seungwoo321/eslint-plugin-standard-jsx`
 
-## Vite 플러그인
+All other features are the same as the default Vite React + TypeScript template.
 
-현재 두 가지 공식 플러그인이 제공됩니다:
+## Vite Plugins
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)는 Fast Refresh를 위해 [Babel](https://babeljs.io/)을 사용합니다.
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)는 Fast Refresh를 위해 [SWC](https://swc.rs/)를 사용합니다.
+Two official plugins are available:
 
-## ESLint 구성 확장하기
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh.
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh.
 
-프로덕션 애플리케이션을 개발하는 경우, 타입 인식 린트 규칙을 활성화하기 위해 구성을 업데이트하는 것을 권장합니다:
+## Extending ESLint Configuration
+
+For production apps, it's recommended to enable type-aware lint rules by updating your config:
 
 ```js
 import { defineConfig } from 'eslint/config'
@@ -31,18 +33,18 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs,ts,mts,jsx,tsx}'],
     ignores: ['eslint.config.js'],
     extends: [
-      // ...tseslint.configs.recommended 대신 아래 내용으로 교체하세요
+      // Replace ...tseslint.configs.recommended with:
       ...tseslint.configs.recommendedTypeChecked,
-      // 또는 더 엄격한 규칙을 위해 다음을 사용하세요
+      // Or use stricter rules with:
       ...tseslint.configs.strictTypeChecked,
-      // 스타일 관련 규칙을 추가하려면 다음을 사용하세요
+      // Add stylistic rules if needed:
       ...tseslint.configs.stylisticTypeChecked,
-      // Standard 규칙은 유지합니다
+      // Keep the Standard rules:
       ...standardJs.configs.recommended,
       ...standardJsx.configs.recommended
     ],
     languageOptions: {
-      // 다른 옵션들...
+      // Additional options...
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname
@@ -50,3 +52,4 @@ export default defineConfig([
     }
   }
 ])
+```
