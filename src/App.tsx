@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import standardjsLogo from './assets/standardjs.svg'
 import './App.css'
 
 function App () {
@@ -28,6 +29,17 @@ function App () {
             src={reactLogo}
             className='logo react'
             alt='React logo'
+          />
+        </a>
+        <a
+          href='https://standardjs.com/'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <img
+            src={standardjsLogo}
+            className='logo standardjs'
+            alt='standardjs logo'
           />
         </a>
       </div>
