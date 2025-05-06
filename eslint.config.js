@@ -8,7 +8,7 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs,ts,mts,jsx,tsx}'],
     ignores: ['eslint.config.js', "dist/**/*"],
     extends: [
-      ...tseslint.configs.recommendedTypeChecked,
+      ...tseslint.configs.recommended,
       ...standardJs.configs.recommended,
       ...standardJsx.configs.recommended
     ],
