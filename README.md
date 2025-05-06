@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4e57968-eb20-4de8-91c4-001474804566/deploy-status)](https://vite-react-ts-standard.netlify.app/)
 
-> 📚 Available in: [English](./README.md) | [한국어](./README.ko.md)
+> English | [한국어](./README.ko.md)  
 
 This template is a modified version of the default Vite React + TypeScript template, with ESLint 9.x and Standard rules added. It includes Hot Module Replacement (HMR) and basic development setup.
 

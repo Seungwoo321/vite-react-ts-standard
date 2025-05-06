@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4e57968-eb20-4de8-91c4-001474804566/deploy-status)](https://vite-react-ts-standard.netlify.app/)
 
-> 📚 Available in: [English](./README.md) | [한국어](./README.ko.md)  
+> [English](./README.md) | 한국어  
 
 이 템플릿은 기본 Vite의 React + TypeScript 템플릿에 ESLint 9.x와 Standard 규칙이 추가된 버전입니다. HMR(Hot Module Replacement)과 기본적인 개발 환경 설정을 제공합니다.
 
