@@ -13,7 +13,7 @@ This template is a modified version of the default Vite React + TypeScript templ
 
 All other features are the same as the default Vite React + TypeScript template.
 
-## Vite Plugins
+## React + Vite
 
 Two official plugins are available:
 

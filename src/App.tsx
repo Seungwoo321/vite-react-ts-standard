@@ -45,7 +45,7 @@ function App () {
       </div>
       <h1>
 
-        Vite + React
+        Vite + React + Standard JS
       </h1>
       <div className='card'>
         <button

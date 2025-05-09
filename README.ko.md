@@ -1,4 +1,4 @@
-# React 19 + TypeScript + Vite + ESLint 9.x + Standard rule
+# React 19 + TypeScript + Vite + ESLint 9.x + Standard JS
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4e57968-eb20-4de8-91c4-001474804566/deploy-status)](https://vite-react-ts-standard.netlify.app/)
 
@@ -9,11 +9,11 @@
 ## 추가된 기능
 
 - **ESLint 9.x**: 최신 버전의 ESLint 통합
-- **Standard rule**: `@seungwoo321/eslint-plugin-standard-js`와 `@seungwoo321/eslint-plugin-standard-jsx` 플러그인을 통한 일관된 코드 스타일 적용
+- **Standard JS**: `@seungwoo321/eslint-plugin-standard-js`와 `@seungwoo321/eslint-plugin-standard-jsx` 플러그인을 통한 일관된 코드 스타일 적용
 
 나머지 기능은 기본 Vite React + TypeScript 템플릿과 동일합니다.
 
-## Vite 플러그인
+## React + Vite
 
 현재 두 가지 공식 플러그인이 제공됩니다:
 
@@ -32,8 +32,10 @@ import tseslint from 'typescript-eslint'
 
 export default defineConfig([
   {
+    ignores: ['dist']
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,mts,jsx,tsx}'],
-    ignores: ['eslint.config.js'],
     extends: [
       // ...tseslint.configs.recommended 대신 아래 내용으로 교체하세요
       ...tseslint.configs.recommendedTypeChecked,
